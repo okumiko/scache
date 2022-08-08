@@ -28,7 +28,7 @@ var (
 	sCaches = make(map[string]*SCache) //所有节点的map
 )
 
-//根据名字获取节点
+//GetSCache 根据名字获取节点
 func GetSCache(name string) *SCache {
 	mu.RLock()
 	g := sCaches[name]
@@ -56,7 +56,7 @@ func (s *SCache) Name() string {
 	return s.name
 }
 
-//对外提供方法
+//Get 对外提供方法
 func (s *SCache) Get(key string) (ByteView, error) {
 	if key == "" {
 		return ByteView{}, fmt.Errorf("key is required")
@@ -71,7 +71,7 @@ func (s *SCache) Get(key string) (ByteView, error) {
 	return s.load(key)
 }
 
-//注册从其他节点获取方法
+//RegisterPicker 注册从其他节点获取方法
 func (s *SCache) RegisterPicker(peers PeerPicker) {
 	if s.picker != nil {
 		panic("RegisterPeerPicker called more than once")

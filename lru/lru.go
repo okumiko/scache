@@ -2,7 +2,7 @@ package lru
 
 import "container/list"
 
-//缓存最底层，lru存储
+//LRUCache 缓存最底层，lru存储
 //lru缓存结构，并发不安全
 type LRUCache struct {
 
@@ -16,7 +16,7 @@ type LRUCache struct {
 	cache map[interface{}]*list.Element
 }
 
-//哈希表的key类型
+//Key 哈希表的key类型
 type Key interface{}
 
 //双链表的节点类型，哈希表的value类型
